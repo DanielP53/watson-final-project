@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductDetail from './ProductDetail';
+import ProductDetail from '../Components/ProductDetail';
 import { ImageList, ImageListItem } from '@mui/material';
 
 

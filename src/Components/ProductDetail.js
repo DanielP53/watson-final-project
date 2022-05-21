@@ -36,42 +36,85 @@ class ProductDetail extends Component {
       const index = Math.floor(
         Math.random() * this.state.product.images.length
       );
-      return (
-        <div id="productDetail">
-          <Card sx={{ maxWidth: 300 }}>
-            <CardMedia
-              component="img"
-              height="300"
-              image={this.state.product.images[index]}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {this.state.product.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {this.state.product.description}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Brand: {this.state.product.brand}
-              </Typography>
-              <Typography variant="body2" color="warning.main">
-                Price: ${this.state.product.price}
-              </Typography>
-              <Typography variant="body2" color="error.main">
-                Discount: $
-                {Math.floor(
-                  (this.state.product.price *
-                    this.state.product.discountPercentage) /
-                    100
-                )}
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="large">Add to cart</Button>
-            </CardActions>
-          </Card>
-        </div>
-      );
+      if(!window.location.href.includes('cart')) {
+        return (
+          <div id="productDetail">
+            <Card sx={{ maxWidth: 300 }}>
+              <CardMedia
+                component="img"
+                height="300"
+                image={this.state.product.images[index]}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {this.state.product.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {this.state.product.description}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Brand: {this.state.product.brand}
+                </Typography>
+                <Typography variant="body2" color="warning.main">
+                  Price: ${this.state.product.price}
+                </Typography>
+                <Typography variant="body2" color="error.main">
+                  Discount: $
+                  {Math.floor(
+                    (this.state.product.price *
+                      this.state.product.discountPercentage) /
+                      100
+                  )}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button onClick={() => {
+                  this.props.addToCart(this.props.id);
+                }} size="large">Add to cart</Button>
+              </CardActions>
+            </Card>
+          </div>
+        );
+      } else {
+        return (
+          <div id="productDetail">
+            <Card sx={{ maxWidth: 300 }}>
+              <CardMedia
+                component="img"
+                height="300"
+                image={this.state.product.images[index]}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {this.state.product.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {this.state.product.description}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Brand: {this.state.product.brand}
+                </Typography>
+                <Typography variant="body2" color="warning.main">
+                  Price: ${this.state.product.price}
+                </Typography>
+                <Typography variant="body2" color="error.main">
+                  Discount: $
+                  {Math.floor(
+                    (this.state.product.price *
+                      this.state.product.discountPercentage) /
+                      100
+                  )}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button onClick={() => {
+                  this.props.removeFromCart(this.props.id);
+                }} size="large">Remove from cart</Button>
+              </CardActions>
+            </Card>
+          </div>
+        );
+      }
     }
   }
 }

@@ -15,7 +15,7 @@ import CategoryList from './Components/CategoryList';
 
 import ProductById from './routes/ProductById';
 import ProductsByCategory from './routes/ProductsByCategory';
-import CartDisplay from './Components/CartDisplay';
+import CartDisplay from './routes/CartDisplay';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const state = {

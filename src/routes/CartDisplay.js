@@ -10,11 +10,12 @@ class CartDisplay extends Component {
     }
     
     render() {
+        console.log(this.props);
         return (
             <div id="cart-list">
                 <ImageList cols={3} style={{padding: '16px'}}>
-                    {this.state.products.map((item)=> (
-                        <ProductDetail removeFromCart={this.props.removeFromCart} id={item} key={item} />
+                    {this.state.products.map((item,index)=> (
+                        <ProductDetail removeFromCart={this.props.removeFromCart} id={item} key={index} />
                     ))}
                 </ImageList>
             </div>

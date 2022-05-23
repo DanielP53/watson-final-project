@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const PathIncludes = (path) => {
   return useLocation().pathname.match(path) !== null;
@@ -39,6 +40,13 @@ const NavBar = () => {
         >
           {PathIncludes('products') ? <ChevronRightIcon /> : null}
           Products
+        </IconButton>
+        <IconButton
+          variant="contained"
+          component={Link}
+          to="/cart"
+        >
+          <ShoppingCartIcon />
         </IconButton>
       </nav>
     </div>
